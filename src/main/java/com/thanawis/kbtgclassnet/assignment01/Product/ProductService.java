@@ -4,6 +4,7 @@ import com.thanawis.kbtgclassnet.assignment01.CustomExceptions.ResourceNotFoundE
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,10 +24,19 @@ public class ProductService {
     }
 
     public List<Product> findAll() {
-        Optional<List<Product>> productOptional = Optional.of(productRepository.findAll());
-        if(productOptional.isPresent())
-            return productOptional.get();
+        Optional<List<Product>> productsOptional = Optional.of(productRepository.findAll());
+        if(productsOptional.isPresent())
+            return productsOptional.get();
         else
             return null;
+    }
+
+    public List<Product> findBySearch(String name,String description){
+        Optional<List<Product>> productsOptional = productRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(name,description);
+        if(productsOptional.isPresent())
+            return productsOptional.get();
+        else
+            return null;
+
     }
 }

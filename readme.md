@@ -3,10 +3,14 @@
 ================================================================
 
 
-get all products
+###get all products
 
-[GET] /api/products -> Product[]
+#### [GET] /api/products -> Product[]
 
-get product by id
+### get product by id
 
-[GET] /api/products/{id} -> Product
+#### [GET] /api/products/{id} -> Product
+
+### get product by search text
+
+#### [GET] /api/products/search?productName={name Or description} -> Product[]

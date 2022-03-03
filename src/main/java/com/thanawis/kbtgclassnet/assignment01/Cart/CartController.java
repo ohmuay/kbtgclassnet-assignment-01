@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,6 +28,14 @@ public class CartController {
 
     @Autowired
     private ProductService productService;
+
+
+    @GetMapping("/cart")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<Order> viewCart(@RequestHeader(name = "Authorization") String token){
+        User user = userService.findByToken(token);
+        return user.getCart().getOrders();
+    }
 
     @PostMapping("/cart")
     @ResponseStatus(HttpStatus.CREATED)

@@ -4,6 +4,7 @@ import com.thanawis.kbtgclassnet.assignment01.CustomExceptions.ResourceNotFoundE
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,5 +20,13 @@ public class ProductService {
             return productOptional.get();
         else
             throw new ResourceNotFoundException(String.format("ProductId : %s not found",productId));
+    }
+
+    public List<Product> findAll() {
+        Optional<List<Product>> productOptional = Optional.of(productRepository.findAll());
+        if(productOptional.isPresent())
+            return productOptional.get();
+        else
+            return null;
     }
 }

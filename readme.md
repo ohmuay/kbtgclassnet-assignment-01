@@ -5,5 +5,8 @@
 
 get all products
 
-[GET] /products -> Product[]
+[GET] /api/products -> Product[]
 
+get product by id
+
+[GET] /api/products/{id} -> Product

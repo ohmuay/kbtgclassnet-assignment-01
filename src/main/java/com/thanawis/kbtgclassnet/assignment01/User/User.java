@@ -1,6 +1,7 @@
 package com.thanawis.kbtgclassnet.assignment01.User;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.thanawis.kbtgclassnet.assignment01.Cart.Cart;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class User {
     private String shippingAddress;
     private String token;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     private Cart cart;
 

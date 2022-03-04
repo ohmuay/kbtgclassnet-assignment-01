@@ -1,6 +1,7 @@
 package com.thanawis.kbtgclassnet.assignment01.Cart;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.thanawis.kbtgclassnet.assignment01.Order.Order;
 import com.thanawis.kbtgclassnet.assignment01.User.User;
 import org.springframework.http.HttpEntity;
@@ -20,6 +21,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "cart")
     private User user;
 

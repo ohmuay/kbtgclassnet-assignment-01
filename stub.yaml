@@ -1,0 +1,14 @@
+-  request:
+     method: POST
+     url: /api/payment
+
+   response:
+     status: 200
+     headers:
+       content-type: application/json
+     body: '{
+       "data":{
+       "status":"success";
+       "code":"200"
+       }
+     }'

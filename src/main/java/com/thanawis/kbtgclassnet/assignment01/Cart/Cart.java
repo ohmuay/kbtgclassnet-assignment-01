@@ -3,6 +3,10 @@ package com.thanawis.kbtgclassnet.assignment01.Cart;
 
 import com.thanawis.kbtgclassnet.assignment01.Order.Order;
 import com.thanawis.kbtgclassnet.assignment01.User.User;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -52,5 +56,13 @@ public class Cart {
 
     public void addOrder(Order order){
         this.orders.add(order);
+    }
+
+    public String checkout(){
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders httpHeaders = new HttpHeaders();
+        HttpEntity httpEntity = new HttpEntity(httpHeaders);
+        ResponseEntity<String> responseEntity  = restTemplate.postForEntity("http://localhost:8882/api/payment", httpEntity,String.class);
+        return responseEntity.getBody();
     }
 }
